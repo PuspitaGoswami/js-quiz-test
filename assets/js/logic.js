@@ -45,7 +45,7 @@ function check_ans(event){
     div.className = "start";
     div2.className = "hide";
     document.getElementById('final-score').textContent = secondsLeft;
-    // clearTimeout(timerInterval);
+    clearTimeout(timerInterval);
     
   }
   else{
