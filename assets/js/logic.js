@@ -4,7 +4,7 @@ var timerInterval;
 var timeEl = document.getElementById("time");
 // Selects element by id
 var startBtn = document.getElementById("start");
-startBtn.addEventListener("click", function () {
+startBtn && startBtn.addEventListener("click", function () {
   setTime();
   let div = document.getElementById("start-screen");
   let div2 = document.getElementById("questions");
@@ -37,48 +37,54 @@ function setTime() {
   }, 1000);
 }
 
-
-function check_ans(event){
-  if(questionNo >= questions.length-1){
+function check_ans(event) {
+  if (questionNo >= questions.length - 1) {
     let div = document.getElementById("end-screen");
     let div2 = document.getElementById("questions");
     div.className = "start";
     div2.className = "hide";
-    document.getElementById('final-score').textContent = secondsLeft;
+    document.getElementById("final-score").textContent = secondsLeft;
     clearTimeout(timerInterval);
-    
-  }
-  else{
-    if(event.target.innerText  === questions[questionNo].correctAnswer){
+    submit.addEventListener("click", function () {
+      var userName = document.querySelector("#initials").value;
+      console.log(userName);
+    });
+  } else {
+    if (event.target.innerText === questions[questionNo].correctAnswer) {
       questionNo++;
-      questionCall()
-    }
-    else{
-      secondsLeft=secondsLeft-5;
+      questionCall();
+    } else {
+      secondsLeft = secondsLeft - 5;
       questionNo++;
-      questionCall()
+      questionCall();
     }
-
   }
- 
-
 }
 
 function questionCall() {
   var question_title = document.getElementById("question-title");
   question_title.textContent = questions[questionNo].question;
-  document.getElementById('choices').textContent = '';
-  for(var i=0;i<4;i++){
-  var options = document.createElement('button');
-  options.addEventListener('click', check_ans);
-  options.textContent= questions[questionNo].options[i];
-  document.getElementById('choices').append(options);
+  document.getElementById("choices").textContent = "";
+  for (var i = 0; i < 4; i++) {
+    var options = document.createElement("button");
+    options && options.addEventListener("click", check_ans);
+    options.textContent = questions[questionNo].options[i];
+    document.getElementById("choices").append(options);
   }
-
 }
 
+const submitButton = document.getElementById('submit');
 
+submitButton && submitButton.addEventListener('click', function(event) {
+  const inputVal = document.getElementById('initials').value;
+  const nextPageUrl = 'highscores.html' + '?inputVal=' + encodeURIComponent(inputVal);
 
+  window.location.href = nextPageUrl;
+});
 
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const inputVal = urlParams.get('inputVal');
 
+document.getElementById('highscores').textContent = inputVal;
 
