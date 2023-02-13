@@ -86,5 +86,5 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const inputVal = urlParams.get('inputVal');
 
-document.getElementById('highscores').textContent = inputVal;
+document.getElementById('list-element').textContent = inputVal + ' - ' + secondsLeft;
 
