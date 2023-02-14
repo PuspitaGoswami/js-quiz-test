@@ -1,4 +1,5 @@
 var questionNo = 0;
+var high_score_list = [];
 var timerInterval;
 // Selects element by class
 var timeEl = document.getElementById("time");
@@ -85,6 +86,23 @@ submitButton && submitButton.addEventListener('click', function(event) {
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const inputVal = urlParams.get('inputVal');
+high_score_list.push(inputVal);
+var list_item = document.getElementById('highscores');
+console.log(high_score_list);
 
-document.getElementById('list-element').textContent = inputVal + ' - ' + secondsLeft;
+for(var i=0;i<high_score_list.length;i++){
+
+  const name_score = document.createElement("li");
+  name_score.classList.add("list-group-item");
+  name_score.dataset.name = inputVal;
+  name_score.textContent = high_score_list[i];
+  name_score.append(list_item);
+}
+
+
+
+const clearHistory = document.getElementById('clear');
+clearHistory && clearHistory.addEventListener('click', function(event) {
+  document.getElementById('list-element').textContent = '';
+});
 
