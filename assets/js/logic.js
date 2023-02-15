@@ -78,6 +78,9 @@ const submitButton = document.getElementById('submit');
 
 submitButton && submitButton.addEventListener('click', function(event) {
   const inputVal = document.getElementById('initials').value;
+   high_score_list.push(inputVal);
+  localStorage.setItem("list-item", high_score_list);
+  high_score_list.append(localStorage.getItem(list_item));
   const nextPageUrl = 'highscores.html' + '?inputVal=' + encodeURIComponent(inputVal);
 
   window.location.href = nextPageUrl;
@@ -86,9 +89,11 @@ submitButton && submitButton.addEventListener('click', function(event) {
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const inputVal = urlParams.get('inputVal');
+high_score_list.append(localStorage.getItem(user_list))
 high_score_list.push(inputVal);
+
 var list_item = document.getElementById('highscores');
-console.log(high_score_list);
+
 
 for(var i=0;i<high_score_list.length;i++){
 
