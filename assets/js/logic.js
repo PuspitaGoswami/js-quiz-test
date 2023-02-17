@@ -1,5 +1,5 @@
 var questionNo = 0;
-var high_score_list = [];
+var high_score_list = JSON.parse(localStorage.getItem('list_item"')) || [];
 var timerInterval;
 // Selects element by class
 var timeEl = document.getElementById("time");
@@ -77,20 +77,24 @@ function questionCall() {
 const submitButton = document.getElementById('submit');
 
 submitButton && submitButton.addEventListener('click', function(event) {
+  
   const inputVal = document.getElementById('initials').value;
-   high_score_list.push(inputVal);
-  localStorage.setItem("list-item", high_score_list);
-  high_score_list.append(localStorage.getItem(list_item));
+  high_score_list.push(inputVal);
+  localStorage.setItem('list_item"', JSON.stringify(high_score_list));
+  // localStorage.setItem("list_item", high_score_list);
+  high_score_list =  high_score_list.concat(JSON.parse(localStorage.getItem('list-item')));
   const nextPageUrl = 'highscores.html' + '?inputVal=' + encodeURIComponent(inputVal);
-
   window.location.href = nextPageUrl;
 });
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const inputVal = urlParams.get('inputVal');
-high_score_list.append(localStorage.getItem(user_list))
+high_score_list =  high_score_list.concat(localStorage.getItem(list_item));
 high_score_list.push(inputVal);
+
+
+console.log('list :' + high_score_list);
 
 var list_item = document.getElementById('highscores');
 
