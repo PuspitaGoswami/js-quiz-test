@@ -79,7 +79,7 @@ const submitButton = document.getElementById('submit');
 
 submitButton && submitButton.addEventListener('click', function(event) {
   
-  const inputVal = document.getElementById('initials').value;
+  const inputVal = document.getElementById('initials').value + ' - ' + secondsLeft;
   if(inputVal != null){
     high_score_list.push(inputVal);
     localStorage.setItem('list_item"', JSON.stringify(high_score_list));
