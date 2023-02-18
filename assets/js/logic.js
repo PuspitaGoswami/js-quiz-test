@@ -1,5 +1,6 @@
 var questionNo = 0;
 var high_score_list = JSON.parse(localStorage.getItem('list_item"')) || [];
+console.log('initial', high_score_list);
 var timerInterval;
 // Selects element by class
 var timeEl = document.getElementById("time");
@@ -79,10 +80,10 @@ const submitButton = document.getElementById('submit');
 submitButton && submitButton.addEventListener('click', function(event) {
   
   const inputVal = document.getElementById('initials').value;
-  high_score_list.push(inputVal);
-  localStorage.setItem('list_item"', JSON.stringify(high_score_list));
-  // localStorage.setItem("list_item", high_score_list);
-  high_score_list =  high_score_list.concat(JSON.parse(localStorage.getItem('list-item')));
+  if(inputVal != null){
+    high_score_list.push(inputVal);
+    localStorage.setItem('list_item"', JSON.stringify(high_score_list));
+  }
   const nextPageUrl = 'highscores.html' + '?inputVal=' + encodeURIComponent(inputVal);
   window.location.href = nextPageUrl;
 });
@@ -90,25 +91,23 @@ submitButton && submitButton.addEventListener('click', function(event) {
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const inputVal = urlParams.get('inputVal');
-high_score_list =  high_score_list.concat(localStorage.getItem(list_item));
-high_score_list.push(inputVal);
+
+  
 
 
-console.log('list :' + high_score_list);
 
 var list_item = document.getElementById('highscores');
 
 
 for(var i=0;i<high_score_list.length;i++){
+  console.log(high_score_list[i])
 
   const name_score = document.createElement("li");
   name_score.classList.add("list-group-item");
   name_score.dataset.name = inputVal;
   name_score.textContent = high_score_list[i];
-  name_score.append(list_item);
+  list_item.append(name_score);
 }
-
-
 
 const clearHistory = document.getElementById('clear');
 clearHistory && clearHistory.addEventListener('click', function(event) {
