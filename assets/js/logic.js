@@ -39,7 +39,26 @@ function setTime() {
   }, 1000);
 }
 
+function show_result (res){
+  console.log(res);
+  let div3 = document.getElementById("feedback");
+     div3.innerHTML = '';
+      div3.classList.remove('hide');
+      div3.textContent = res;
+      setTimeout(hide_feedback, 2000);
+
+}
+
+function hide_feedback(){
+  let div3 = document.getElementById("feedback");
+  div3.classList.add('hide');
+  div3.innerHTML = '';
+}
+
+var ans;
 function check_ans(event) {
+
+
   if (questionNo >= questions.length - 1) {
     let div = document.getElementById("end-screen");
     let div2 = document.getElementById("questions");
@@ -49,24 +68,33 @@ function check_ans(event) {
     clearTimeout(timerInterval);
     submit.addEventListener("click", function () {
       var userName = document.querySelector("#initials").value;
-      console.log(userName);
     });
   } else {
     if (event.target.innerText === questions[questionNo].correctAnswer) {
       questionNo++;
+      ans='correct';
       questionCall();
+      show_result(ans);
+   
+
     } else {
+      ans='wrong';
+      show_result(ans);
+      console.log(ans);
       secondsLeft = secondsLeft - 5;
       questionNo++;
       questionCall();
     }
+   
   }
+ 
 }
 
 function questionCall() {
   var question_title = document.getElementById("question-title");
   question_title.textContent = questions[questionNo].question;
   document.getElementById("choices").textContent = "";
+  
   for (var i = 0; i < 4; i++) {
     var options = document.createElement("button");
     options && options.addEventListener("click", check_ans);

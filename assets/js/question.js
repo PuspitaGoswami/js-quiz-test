@@ -18,6 +18,17 @@ let questions = [{
   ],
   correctAnswer: "Dhaka"
 }
+,
+  {
+  question: "What is the capital of India?",
+  options: [
+    "Paris",
+    "London",
+    "Delhi",
+    "Berlin"
+  ],
+  correctAnswer: "Delhi"
+}
 ];
 
 
