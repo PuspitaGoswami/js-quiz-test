@@ -1,5 +1,5 @@
 var questionNo = 0;
-var high_score_list = JSON.parse(localStorage.getItem('list_item"')) || [];
+var high_score_list = JSON.parse(localStorage.getItem('list_item')) || [];
 console.log('initial', high_score_list);
 var timerInterval;
 // Selects element by class
@@ -82,7 +82,7 @@ submitButton && submitButton.addEventListener('click', function(event) {
   const inputVal = document.getElementById('initials').value + ' - ' + secondsLeft;
   if(inputVal != null){
     high_score_list.push(inputVal);
-    localStorage.setItem('list_item"', JSON.stringify(high_score_list));
+    localStorage.setItem('list_item', JSON.stringify(high_score_list));
   }
   const nextPageUrl = 'highscores.html' + '?inputVal=' + encodeURIComponent(inputVal);
   window.location.href = nextPageUrl;
@@ -111,6 +111,8 @@ for(var i=0;i<high_score_list.length;i++){
 
 const clearHistory = document.getElementById('clear');
 clearHistory && clearHistory.addEventListener('click', function(event) {
-  document.getElementById('list-element').textContent = '';
+  list_item.innerHTML = '';
+  localStorage.removeItem('list_item');
+  
 });
 
