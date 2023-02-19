@@ -40,5 +40,5 @@ N/A
 
 MIT License
 
-![Alt text](ss1.JPG)
-![Alt text](ss2.JPG)
+![Alt text](assets/images/ss1.JPG)
+![Alt text](assets/images/ss2.JPG)

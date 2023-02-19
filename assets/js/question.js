@@ -1,33 +1,33 @@
 let questions = [{
-    question: "What is the capital of France?",
+    question: "Which type of JavaScript language is ___",
     options: [
-      "Paris",
-      "London",
-      "Rome",
-      "Berlin"
+      "Object-Oriented",
+      "Object-Based",
+      "Assembly-language",
+      "High-level",
     ],
-    correctAnswer: "Paris"
+    correctAnswer: "Object-Based"
   },
   {
-  question: "What is the capital of Bangladesh?",
+  question: " Which one of the following also known as Conditional Expression:",
   options: [
-    "Paris",
-    "London",
-    "Dhaka",
-    "Berlin"
+    "Alternative to if-else",
+    "Switch statement",
+    "If-then-else statement",
+    "immediate if",
   ],
-  correctAnswer: "Dhaka"
+  correctAnswer: "immediate if"
 }
 ,
   {
-  question: "What is the capital of India?",
+  question: "In JavaScript, what is a block of statement?",
   options: [
-    "Paris",
-    "London",
-    "Delhi",
-    "Berlin"
+    "Conditional block",
+    "block that combines a number of statements into a single compound statement",
+    "both conditional block and a single statement",
+    "block that contains a single statement",
   ],
-  correctAnswer: "Delhi"
+  correctAnswer: "block that combines a number of statements into a single compound statement"
 }
 ];
 
