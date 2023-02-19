@@ -45,7 +45,7 @@ function show_result (res){
      div3.innerHTML = '';
       div3.classList.remove('hide');
       div3.textContent = res;
-      setTimeout(hide_feedback, 2000);
+      setTimeout(hide_feedback, 1500);
 
 }
 
@@ -59,7 +59,7 @@ var ans;
 function check_ans(event) {
 
 
-  if (questionNo >= questions.length - 1) {
+  if (questionNo >= questions.length-1) {
     let div = document.getElementById("end-screen");
     let div2 = document.getElementById("questions");
     div.className = "start";
@@ -70,13 +70,12 @@ function check_ans(event) {
       var userName = document.querySelector("#initials").value;
     });
   } else {
-    if (event.target.innerText === questions[questionNo].correctAnswer) {
+    
+    if (event.target.innerText === questions[questionNo].correctAnswer ) {
       questionNo++;
       ans='correct';
       questionCall();
       show_result(ans);
-   
-
     } else {
       ans='wrong';
       show_result(ans);
